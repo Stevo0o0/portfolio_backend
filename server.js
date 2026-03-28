@@ -6,10 +6,30 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 
+const userRoutes = require("./routes/userRoutes");
+const projectRoutes = require("./routes/projectRoutes");
+const referenceRoutes = require("./routes/referenceRoutes");
+const serviceRoutes = require("./routes/serviceRoutes");
+
 const app = express();
 
 const PORT = process.env.PORT || 3000;
 const MONGODB_URI = process.env.MONGODB_URI;
+
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Test route
+app.get("/", (req, res) => {
+  res.json({ message: "API is running" });
+});
+
+// API routes
+app.use("/api/users", userRoutes);
+app.use("/api/projects", projectRoutes);
+app.use("/api/references", referenceRoutes);
+app.use("/api/services", serviceRoutes);
 
 mongoose.connect(MONGODB_URI)
   .then(() => {

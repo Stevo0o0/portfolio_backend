@@ -10,9 +10,8 @@ const UserSchema = new mongoose.Schema({
 });
 
 // Middleware to update the 'updated' field on save
-UserSchema.pre('save', function(next) {
+UserSchema.pre('save', function() {
   this.updated = Date.now();
-  next();
 });
 
 module.exports = mongoose.model('User', UserSchema);
