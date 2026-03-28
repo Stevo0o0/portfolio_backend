@@ -4,6 +4,7 @@ dns.setDefaultResultOrder("ipv4first");
 require("dotenv").config();
 
 const express = require("express");
+const cors = require("cors");
 const mongoose = require("mongoose");
 
 const userRoutes = require("./routes/userRoutes");
@@ -17,6 +18,7 @@ const PORT = process.env.PORT || 3000;
 const MONGODB_URI = process.env.MONGODB_URI;
 
 // Middleware
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
