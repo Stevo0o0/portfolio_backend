@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const serviceController = require('../controllers/serviceController');
+const ctrl = require('../controllers/serviceController');
 
-// Routes for Services [cite: 64]
-router.get('/', serviceController.getAllServices);
-router.post('/', serviceController.createService);
-router.put('/:id', serviceController.updateService);
-router.delete('/:id', serviceController.deleteService);
+router.get('/', ctrl.getAll);
+router.get('/:id', ctrl.getById);
+router.post('/', ctrl.create);
+router.put('/:id', ctrl.update);
+router.delete('/:id', ctrl.delete);
 
 module.exports = router;
