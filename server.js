@@ -11,6 +11,7 @@ const userRoutes = require("./routes/userRoutes");
 const projectRoutes = require("./routes/projectRoutes");
 const referenceRoutes = require("./routes/referenceRoutes");
 const serviceRoutes = require("./routes/serviceRoutes");
+const authRoutes = require("./routes/authRoutes");
 
 const app = express();
 
@@ -32,6 +33,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/projects", projectRoutes);
 app.use("/api/references", referenceRoutes);
 app.use("/api/services", serviceRoutes);
+app.use("/api/auth", authRoutes);
 
 mongoose.connect(MONGODB_URI)
   .then(() => {
